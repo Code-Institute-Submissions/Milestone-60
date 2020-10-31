@@ -6,9 +6,8 @@ from bson.objectid import ObjectId
 # Global Variables
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'recruitment'
-app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster.tzpih.mongodb.net/recruitment?retryWrites=true&w=majority'
 
-app.secret_key = os.getenv('SECRET', 'randomstring123')
 
 mongo = PyMongo(app)
 
