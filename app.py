@@ -15,7 +15,10 @@ mongo = PyMongo(app)
 @app.route('/')
 def home():
    
-    return render_template("home.html")
+
+    recent_resumes=mongo.db.resumes.find().sort([("date",-1)]).limit(4)
+    return render_template("home.html", recent_resumes=recent_resumes)
+
     
 
 @app.route('/add_recipe')
@@ -27,5 +30,5 @@ def add_recipe():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
-            port=int(os.environ.get('PORT', '5000')),
+            port=int(os.environ.get('PORT', '5001')),
             debug=False)
