@@ -19,11 +19,10 @@ if __name__ == '__main__':
 @app.route('/')
 def home():
    
-    return render_template("home.html", recently_added_recipes=recently_added_recipes, most_viewed_recipes=most_viewed_recipes)
+    return render_template("home.html")
     
 
-@app.route('/add_cv/<cv_id>')
-def get_form(cv_id):
+@app.route('/add_recipe')
+def add_recipe():
    
-    return render_template('get_form.html', recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
-
+    return render_template('add_resume.html', resumes=mongo.db.job_sector_title.find().sort([("name", 1)]))
