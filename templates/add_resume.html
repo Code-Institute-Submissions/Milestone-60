@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container page-title">
     <h1 class="mt-5 mb-3">Add Resume to TechRecruit Database</h1>
-    <form action="{{ url_for('add_resume') }}" method="POST">
+    <form action="{{ url_for('save_resume') }}" method="POST">
         <div class="form-group">
             <label for="name">Client Name</label>
             <input name="name" type="text" class="form-control" id="name" required>
@@ -11,14 +11,14 @@
 
 
 <!--test drop down job sector menu-->
-        <div class="form-group">
-            <label for="job_sector">Job Sector</label>
+ <!--       <div class="form-group">
+            <label for="resumes">Job Sector</label>
             <select class="form-control" name="job_sector" id="job_sector" required>
                 {% for cv in resumes %}
                 <option value="{{resumes.job_sector_title}}">{{resumes.job_sector_title}}</option>
                 {% endfor %}
             </select>
-        </div>
+        </div>-->
 
 
 
@@ -31,13 +31,17 @@
         </div>
         <div class="form-group">
             <label for="work_duties">Work Duties</label>
-            <input name="work_duties" type="text" class="form-control" id="work_duties" placeholder="Example: '6 to 8' "
-                required>
+            <textarea name="work_duties" rows="5"  class="form-control" id="work_duties" placeholder="Example: '6 to 8' "
+                required></textarea>
         </div>
         <div class="form-group">
             <label for="skills">Skills</label>
             <textarea name="skills" rows="3" class="form-control" id="skills"
                 placeholder="Please separate all skils using a comma(,). Example: Microsoft Word, C# Programming, ..." required></textarea>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-edit" type="submit">Save Resume</button>
         </div>
        
     </form>

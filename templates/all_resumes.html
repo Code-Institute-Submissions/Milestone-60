@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container page-title">
+    <div class="text-left ml-3 mt-3">
+        <h1>Resumes</h1>
+    </div>
+    <div class="text-right">
+        <form class="form-inline" method="GET">
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <button class="btn btn-success ml-3" type="submit">Go</button>
+                </div>
+                <input type="hidden" name="page" value="1">
+                <input class="form-control border-search-bar" type="text" name="search" minlength="3"
+                    placeholder="Search...">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="boxed ">
+    {% if count > 0 %}
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for cv in resumes %}
+            <a href="{{url_for('get_resume', resume_id=resume._id)}}">
+                <div class="col mb-4 card-info">
+                    
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="ml-3">No results found!</p>
+        {% endif %}
+        {% if page %}
+        <div class="text-center mb-3">
+            <span>
+                {% if not previous %}
+                {% else %}
+                <a class="pagination-arrow" href="{{previous}}">&lt;</a>
+                {% endif %}
+                <span>{{page}}</span>
+                {% if not next %}
+                {% else %}
+                <a class="pagination-arrow" href="{{next}}">&gt;</a>
+                {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
