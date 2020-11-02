@@ -31,7 +31,7 @@ def add_resume():
 def save_resume():   
     resume=request.form.to_dict()
     resume["date"]=datetime.datetime.now()
-    mongo.db.reumes.insert_one(resume)
+    mongo.db.resumes.insert_one(resume)
     return redirect(url_for("get_resume"))
 
 
