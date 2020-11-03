@@ -21,7 +21,7 @@ def home():
 
 @app.route('/add_resume')
 def add_resume():
-    return render_template('add_resume.html', resumes=mongo.db.resumes.job_sector_title.find().sort([("job_sector_title", 1)]))
+    return render_template('add_resume.html', job_title=mongo.db.job_title.find().sort([("job_sector_title", 1)]))
 
 
 
@@ -42,7 +42,7 @@ def delete_resume(resume_id):
 
 @app.route('/edit_resume/<resume_id>')
 def edit_resume(resume_id):
-    return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.job_sector_title.find().sort([("name", 1)]))
+    return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.job_title.find().sort([("name", 1)]))
 
 
 
