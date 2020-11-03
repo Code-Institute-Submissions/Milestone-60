@@ -46,6 +46,12 @@ def edit_resume(resume_id):
 
 
 
+@app.route('/resume/<resume_id>')
+def get_resume(resume_id):
+
+    mongo.db.resumes.update_one({'_id': ObjectId(resume_id)}, {"$inc":{"clicks": 1}})
+    return render_template('resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}))
+
 
 
 if __name__ == '__main__':
