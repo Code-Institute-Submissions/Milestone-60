@@ -13,7 +13,7 @@
 <!--test drop down job sector menu-->
         <div class="form-group">
             <label for="resumes">Job Sector</label>
-            <select class="form-control" name="resumes" id="resumes" required>
+            <select class="form-control" name="job_title" id="job_title" required>
                 {% for resumes in job_title %}
                 <option value="{{resumes.job_title}}">{{resumes.job_title}}</option>
                 {% endfor %}

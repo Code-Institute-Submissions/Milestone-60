@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container page-title">
+    <h3>{{resume.name}}</h3>
+    <div class="text-center">
+    </div>
+    <h3>Resume</h3>
+    <div class="recipe-field">
+        <p>{{resume.job_title}}</p>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <form id="edit_form" action="{{url_for('edit_resume', resume_id=resume._id)}}" method="GET"></form>
+        <button form="edit_form" type="submit" class="btn btn-edit">Edit</button>
+        <button type="button" class="btn btn-del" data-toggle="modal" data-target="#deleteModal">Delete</button>
+ 
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title title-center-text" id="exampleModalLongTitle">Delete Resume</h5>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the resume?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-edit" data-dismiss="modal">Cancel</button>
+                        <form method="POST" action="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
+                            <button type="submit" class="btn btn-del">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

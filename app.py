@@ -14,8 +14,7 @@ mongo = PyMongo(app)
 @app.route('/')
 def home():
     recently_added_resumes=mongo.db.resumes.find().sort([("date",-1)]).limit(4)
-    most_viewed_resumes=mongo.db.resumes.find().sort([("clicks",-1)]).limit(4)
-    return render_template("home.html", recently_added_resumes=recently_added_resumes, most_viewed_resumes=most_viewed_resumes)
+    return render_template("home.html", recently_added_resumes=recently_added_resumes)
     
 
 

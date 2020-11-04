@@ -10,7 +10,7 @@ body {
 #logo {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
-    color: #ff0000;
+    color: #ffffff;
     text-decoration: none;
     right: 0;
     top: 12px;
@@ -19,12 +19,12 @@ body {
 .navbar-links {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    color: #ff0000;
+    color: #ffffff;
     margin-right: 10px;
 }
 
 .bg-nav-bar {
-    background-color: #269014;
+    background-color: #5da3fd;
     min-height: 75px;
 }
 
@@ -33,15 +33,10 @@ body {
 .container-home {
     height: 450px;
     position: relative;
-    background: url("/static/images/home-bg.jpg") no-repeat center top;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 .header-home {
-    color: #ff0000;
+    color: #ffefef;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     padding-top: 250px; 
@@ -60,11 +55,11 @@ body {
     }
 }
 
-/*-----------recipe(s)------------*/
+/*-----------resumes------------*/
 
 .btn-edit {
     background: #269014;
-    color: #ff0000;
+    color: #110e0e;
     margin: 30px 10px 20px 0 ;
     height: 50px;
     width: 100px;
@@ -78,20 +73,17 @@ body {
     width: 100px;
 }
 
-.recipe-img {
-    width: 70%;
-    object-fit: contain;
-}
+
 
 .inst-list {
     list-style: none;
 }
 
-.recipe-field {
+.resume-field {
     margin-left: 40px;
 }
 
-.recipe-field-list{
+.resume-field-list{
     margin-left: 20px;
 }
 
