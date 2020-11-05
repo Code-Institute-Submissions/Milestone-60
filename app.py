@@ -53,6 +53,28 @@ def get_resume(resume_id):
 
 
 
+@app.route('/resumes')
+def get_resumes():
+
+    search=request.args.get('search')
+    page = request.args.get('page')
+    if not page:
+        return redirect('/resumes?page=1')
+    try:
+        page = int(page)
+    except (TypeError, ValueError):
+        return redirect('/resumes?page=1')
+    query={} if not search else {'name':re.compile(rf'{search}',re.I)}
+    count=mongo.db.resumes.count(query)
+    resumes=mongo.db.resumes.find(query)
+    previous_url=url_for('get_resumes', page=page-1, search=search) if page > initial_page else None
+    next_url=url_for('get_resumes', page=page+1, search=search) if page*page_limit < count else None
+
+    return render_template('resumees.html', resumes=resumes.sort([("date",-1)]).skip((page-initial_page)*page_limit if page > initial_page else 0).limit(page_limit), page=(page if count > page_limit else None) if page > 0 else initial_page,  previous=previous_url, next=next_url, count=count)   
+
+
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),

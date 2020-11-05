@@ -14,8 +14,8 @@
         <div class="form-group">
             <label for="resumes">Job Sector</label>
             <select class="form-control" name="job_title" id="job_title" required>
-                {% for resumes in job_title %}
-                <option value="{{resumes.job_title}}">{{resumes.job_title}}</option>
+                {% for job_title in job_title %}
+                <option value="{{job_title.job_sector_title}}">{{job_title.job_sector_title}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label for="work_duties">Work Duties</label>
-            <textarea name="work_duties" rows="5"  class="form-control" id="work_duties" placeholder="Example: '6 to 8' "
+            <textarea name="work_duties" rows="5"  class="form-control" id="work_duties" placeholder="Eg; installing, configuring and maintaining computer user accounts....etc "
                 required></textarea>
         </div>
         <div class="form-group">

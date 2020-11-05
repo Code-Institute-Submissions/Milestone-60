@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container page-title">
+    <h1 class="mt-5 mb-3">Edit Resume</h1>
+    <form action="{{ url_for('update_resume', resume_id=resume._id) }}" method="POST">
+        <div class="form-group">
+            <label for="name">Resume Name</label>
+            <input name="name" type="text" class="form-control" id="name" value="{{resume.name}}" required>
+        </div>
+    </form>
+</div>
+{% endblock %}
