@@ -53,22 +53,18 @@ def get_resume(resume_id):
 
 
 
-@app.route('/resumes')
+@app.route('/all_resumes')
 def get_resumes():
 
-    search=request.args.get('search')
-    page = request.args.get('page')
-    if not page:
-        return redirect('/resumes?page=1')
-    try:
-        page = int(page)
-    except (TypeError, ValueError):
-        return redirect('/resumes?page=1')
-    query={} if not search else {'name':re.compile(rf'{search}',re.I)}
-    count=mongo.db.resumes.count(query)
-  
-    previous_url=url_for('get_resumes', page=page-1, search=search) if page > initial_page else None
-    next_url=url_for('get_resumes', page=page+1, search=search) if page*page_limit < count else None
+    
+    return render_template('all_resumes.html', resumes=resumes.sort([("date",-1)]))
+
+
+@app.route('/resumes/<resume_id>/update', methods=["POST"])
+def update_resume(resume_id):
+    
+    mongo.db.resumes.update({'_id': ObjectId(resume_id)}, request.form.to_dict())
+    return redirect(url_for('get_resume', resume_id=resume_id))
 
     
 
