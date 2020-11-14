@@ -32,7 +32,7 @@ def save_resume():
     return redirect(url_for("get_resume"))
 
 
-@app.route('/all_resumes/<resume_id>/delete', methods=["POST"])
+@app.route('/resumes/<resume_id>/delete', methods=["POST"])
 def delete_resume(resume_id):
     mongo.db.resumes.remove({'_id': ObjectId(resume_id)})
     return redirect(url_for('get_resume'))
@@ -53,11 +53,11 @@ def get_resume(resume_id):
 
 
 
-@app.route('/all_resumes')
+@app.route('/resumes')
 def get_resumes():
-
+   
     
-    return render_template('all_resumes.html', resumes=resumes.sort([("date",-1)]))
+    return render_template('resumes.html')
 
 
 @app.route('/resumes/<resume_id>/update', methods=["POST"])
