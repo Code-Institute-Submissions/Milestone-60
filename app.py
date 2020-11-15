@@ -9,6 +9,8 @@ app.config['MONGO_DBNAME'] = 'recruitment'
 app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster.tzpih.mongodb.net/recruitment?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
+pg_lim = 8
+first_pg = 1
 
 
 @app.route('/')
@@ -41,7 +43,7 @@ def delete_resume(resume_id):
 
 @app.route('/edit_resume/<resume_id>')
 def edit_resume(resume_id):
-    return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.job_title.find().sort([("name", 1)]))
+    return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.resumes.find().sort([("name", 1)]))
 
 
 
@@ -55,9 +57,21 @@ def get_resume(resume_id):
 
 @app.route('/resumes')
 def get_resumes():
-   
-    
-    return render_template('resumes.html')
+    search=request.args.get('search')
+    page = request.args.get('page')
+    if not page:
+        return redirect('/resumes?page=1')
+    try:
+        page = int(page)
+    except (TypeError, ValueError):
+        return redirect('/resumes?page=1')
+    query={} if not search else {'name':re.compile(rf'{search}',re.I)}
+    count=mongo.db.resumes.count(query)
+    resumes=mongo.db.resumes.find(query)
+    previous_url=url_for('get_resumes', page=page-1, search=search) if page > first_pg else None
+    next_url=url_for('get_resumes', page=page+1, search=search) if page*pg_lim < count else None
+
+    return render_template('resumes.html', resumes=resumes.sort([("date",-1)]).skip((page-first_pg)*pg_lim if page > first_pg else 0).limit(pg_lim), page=(page if count > pg_lim else None) if page > 0 else first_pg,  previous=previous_url, next=next_url, count=count)   
 
 
 @app.route('/resumes/<resume_id>/update', methods=["POST"])
