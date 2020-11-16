@@ -3,17 +3,38 @@
 <div class="container page-title">
     <h3>{{resume.name}}</h3>
     <div class="text-center">
+        {% if not resume.image %}
+        <img src="/static/images/default_image.png" class="mb-5 mt-5 resume-img">
+        {% else %}
+        <img src="{{resume.image}}" class="mb-5 mt-5 resume-img">
+        {% endif %}
     </div>
-    <h3>Resume</h3>
-    <div class="recipe-field">
-        <p>{{resume.job_title}}</p>
+    <h3>Job Title</h3>
+    <div class="resume-field">
+        <p>{{resume.job_sector_title}}</p>
     </div>
-
+    <h3>Cover Letter</h3>
+    <div class="resume-field">
+        <p>{{resume.cover_letter}}</p>
+    </div>
+    <h3>Work Duties</h3>
+    <ul class="resume-field-list">
+        {% for duties in resume.work_duties.split(",") %}
+        <li>{{duties.title()}}</li>
+        {% endfor %}
+    </ul>
+     <h3>Skills</h3>
+    <ul class="resume-field-list">
+        {% for skills in resume.skills.split(",") %}
+        <li>{{skills.title()}}</li>
+        {% endfor %}
+    </ul>
+    
     <div class="col-md-12 text-center">
         <form id="edit_form" action="{{url_for('edit_resume', resume_id=resume._id)}}" method="GET"></form>
         <button form="edit_form" type="submit" class="btn btn-edit">Edit</button>
         <button type="button" class="btn btn-del" data-toggle="modal" data-target="#deleteModal">Delete</button>
- 
+        <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
