@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container page-title">
-    <h3>{{resume.name}}</h3>
+    <h4>{{resume.name}}</h4>
     <div class="text-center">
         {% if not resume.image %}
         <img src="/static/images/default_image.png" class="mb-5 mt-5 resume-img">
@@ -9,22 +9,22 @@
         <img src="{{resume.image}}" class="mb-5 mt-5 resume-img">
         {% endif %}
     </div>
-    <h3>Job Title</h3>
-    <div class="resume-field">
-        <p>{{resume.job_sector_title}}</p>
+    <h2>Job Title</h2>
+    <div class="resume-area">
+        <p>{{resume.job_title}}</p>
     </div>
-    <h3>Cover Letter</h3>
-    <div class="resume-field">
+    <h4>Cover Letter</h4>
+    <div class="resume-area">
         <p>{{resume.cover_letter}}</p>
     </div>
-    <h3>Work Duties</h3>
-    <ul class="resume-field-list">
+    <h4>Work Duties</h4>
+    <ul class="resume-area-list">
         {% for duties in resume.work_duties.split(",") %}
         <li>{{duties.title()}}</li>
         {% endfor %}
     </ul>
-     <h3>Skills</h3>
-    <ul class="resume-field-list">
+     <h4>Skills</h4>
+    <ul class="resume-area-list">
         {% for skills in resume.skills.split(",") %}
         <li>{{skills.title()}}</li>
         {% endfor %}

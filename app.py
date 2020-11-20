@@ -34,10 +34,14 @@ def save_resume():
     return redirect(url_for("get_resume"))
 
 
-@app.route('/resumes/<resume_id>/delete', methods=["POST"])
-def delete_resume(resume_id):
-    mongo.db.resumes.remove({'_id': ObjectId(resume_id)})
-    return redirect(url_for('get_resume'))
+@app.route('/insert_resume', methods=["POST"])
+def insert_resume():
+
+    resume=request.form.to_dict()
+    resume["date"]=datetime.datetime.now()
+    mongo.db.resumes.insert_one(resume)
+    return redirect(url_for("get_resumes"))
+
 
 
 
@@ -45,6 +49,13 @@ def delete_resume(resume_id):
 def edit_resume(resume_id):
     return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.resumes.find().sort([("name", 1)]))
 
+
+
+@app.route('/resumes/<resume_id>/delete', methods=["POST"])
+def delete_resume(resume_id):
+
+    mongo.db.resumes.remove({'_id': ObjectId(resume_id)})
+    return redirect(url_for('get_resumes'))
 
 
 @app.route('/resume/<resume_id>')

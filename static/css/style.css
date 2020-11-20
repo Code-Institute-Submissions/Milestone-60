@@ -6,30 +6,30 @@ body {
     color: black
 }
 
-/*-----------navbar------------*/
+/*---------navbar----------*/
 
 #logo {
     font-family: 'Josefin Sans', sans-serif;
+    right: 0;
+    top: 15px;
     font-size: 30px;
     color: #ffffff;
     text-decoration: none;
-    right: 0;
-    top: 12px;
 }
 
 .navbar-links {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    margin-right: 12px;
+    font-size: 18px;
     color: #ffffff;
-    margin-right: 10px;
 }
 
 .bg-nav-bar {
+    min-height: 70px;
     background-color: #5da3fd;
-    min-height: 75px;
 }
 
-/*-----------home------------*/
+/*---------home----------*/
 
 .container-home {
     height: 450px;
@@ -44,33 +44,33 @@ body {
     width: 50%;
  }
 
- .divider {
+ .seperate {
     width: 400px;
     text-align: center;
     background-color: #5da3fd;
 }
 
 @media only screen and (max-width: 430px) {
-    .divider {
+    .seperate {
         width: 75%;
     }
 }
 
-/*-----------resumes------------*/
+/*---------resumes----------*/
 
 .btn-edit {
     background: #5da3fd;
-    color: #110e0e;
+    color: #2eadf7;
     margin: 30px 10px 20px 0 ;
-    height: 80px;
+    height: 40px;
     width: 100px;
 }
 
 .btn-del {
     background: #BE1526;
-    color: #fd0707;
+    color: #ff2e2e;
     margin: 30px 10px 20px 0;
-    height: 50px;
+    height: 40px;
     width: 100px;
 }
 
@@ -80,20 +80,15 @@ body {
     list-style: none;
 }
 
-.resume-field {
-    margin-left: 40px;
+.resume-area {
+    margin-left: 35px;
 }
 
-.resume-field-list{
-    margin-left: 20px;
+.resume-area-list{
+    margin-left: 25px;
 }
 
-.border-search-bar {
-    border-top:none;
-    border-left:none;
-    border-right:none;
-    border-bottom: 2px #269014 solid;
-}
+
 
 .pagination-arrow {
     color: black;
