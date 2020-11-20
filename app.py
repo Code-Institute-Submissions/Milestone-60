@@ -25,6 +25,24 @@ def INSERT_resume():
     return render_template('INSERT_resume.html', job_title=mongo.db.job_title.find().sort([("job_sector_title", 1)]))
 
 
+@app.route('/resumes')
+def get_resumes():
+    search=request.args.get('search')
+    page = request.args.get('page')
+    if not page:
+        return redirect('/resumes?page=1')
+    try:
+        page = int(page)
+    except (TypeError, ValueError):
+        return redirect('/resumes?page=1')
+    query={} if not search else {'name':re.compile(rf'{search}',re.I)}
+    count=mongo.db.resumes.count(query)
+    resumes=mongo.db.resumes.find(query)
+    previous_url=url_for('get_resumes', page=page-1, search=search) if page > first_pg else None
+    next_url=url_for('get_resumes', page=page+1, search=search) if page*pg_lim < count else None
+
+    return render_template('resumes.html', resumes=resumes.sort([("date",-1)]).skip((page-first_pg)*pg_lim if page > first_pg else 0).limit(pg_lim), page=(page if count > pg_lim else None) if page > 0 else first_pg,  previous=previous_url, next=next_url, count=count)   
+
 
 @app.route('/save_resume', methods=["POST"])
 def save_resume():   
@@ -67,23 +85,7 @@ def get_resume(resume_id):
 
 
 
-@app.route('/resumes')
-def get_resumes():
-    search=request.args.get('search')
-    page = request.args.get('page')
-    if not page:
-        return redirect('/resumes?page=1')
-    try:
-        page = int(page)
-    except (TypeError, ValueError):
-        return redirect('/resumes?page=1')
-    query={} if not search else {'name':re.compile(rf'{search}',re.I)}
-    count=mongo.db.resumes.count(query)
-    resumes=mongo.db.resumes.find(query)
-    previous_url=url_for('get_resumes', page=page-1, search=search) if page > first_pg else None
-    next_url=url_for('get_resumes', page=page+1, search=search) if page*pg_lim < count else None
 
-    return render_template('resumes.html', resumes=resumes.sort([("date",-1)]).skip((page-first_pg)*pg_lim if page > first_pg else 0).limit(pg_lim), page=(page if count > pg_lim else None) if page > 0 else first_pg,  previous=previous_url, next=next_url, count=count)   
 
 
 @app.route('/resumes/<resume_id>/update', methods=["POST"])

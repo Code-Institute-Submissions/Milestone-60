@@ -11,22 +11,22 @@
             <label for="cuisine">Job Title</label>
             <select class="form-control" name="cuisine" id="cuisine" required>
                 {% for job in job_sector_title %}
-                {% if job.job_sector_title == resumes.job_sector_title %}
-                <option value="{{job_title.job_sector_title}}" selected>{{job_title.job_sector_title}}</option>
-                {% else %}
-                <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
-                {% endif %}
+                    {% if job.job_sector_title == resume.job_title %}
+                    <option value="{{job_title.job_sector_title}}" selected>{{job_title.job_sector_title}}</option>
+                    {% else %}
+                    <option value="{{job_title.job_sector_title}}">{{job_title.job_sector_title}}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="ingredients">Work Duties</label>
             <textarea name="ingredients" rows="3" class="form-control" id="ingredients"
-                required>{{resumes.work_duties}}</textarea>
+                required>{{resume.work_duties}}</textarea>
         </div>
         <div class="form-group">
             <label for="tools">Skills</label>
-            <textarea name="tools" rows="3" class="form-control" id="tools" required>{{resumes.skills}}</textarea>
+            <textarea name="tools" rows="3" class="form-control" id="tools" required>{{resume.skills}}</textarea>
         </div>
 
         <div class="form-group">
