@@ -20,9 +20,9 @@ def home():
     
 
 
-@app.route('/add_resume')
-def add_resume():
-    return render_template('add_resume.html', job_title=mongo.db.job_title.find().sort([("job_sector_title", 1)]))
+@app.route('/INSERT_resume')
+def INSERT_resume():
+    return render_template('INSERT_resume.html', job_title=mongo.db.job_title.find().sort([("job_sector_title", 1)]))
 
 
 
@@ -63,6 +63,7 @@ def get_resume(resume_id):
 
     mongo.db.resumes.update_one({'_id': ObjectId(resume_id)}, {"$inc":{"clicks": 1}})
     return render_template('resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}))
+
 
 
 
