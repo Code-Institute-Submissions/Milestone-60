@@ -15,14 +15,14 @@ first_pg = 1
 
 @app.route('/')
 def home():
-    recently_added_resumes=mongo.db.resumes.find().sort([("date",-1)]).limit(4)
+    recently_added_resumes=mongo.db.resumes.find().sort([("date",-1)]).limit(3)
     return render_template("home.html", recently_added_resumes=recently_added_resumes)
     
 
 
 @app.route('/INSERT_resume')
 def INSERT_resume():
-    return render_template('INSERT_resume.html', job_title=mongo.db.job_title.find().sort([("job_sector_title", 1)]))
+    return render_template('INSERT_resume.html', job_title=mongo.db.job_title.find().sort([("job_title", 1)]))
 
 
 @app.route('/resumes')

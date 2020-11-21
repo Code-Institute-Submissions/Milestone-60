@@ -1,20 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid container-home">
-    <div class="header-home text-center">
-	    <h2 class="font-weight-bold">kjh kjh kjh kjh kjh kjh kjh kjh <br>Add one today!</h2>
+<div class="main-container container-fluid">
+    <div class="main-header text-center">
+	    <h2 class="font-weight-bold">TechRecruit Admin Database<br>Use navigation to add resumes to database</h2>
     </div>
 </div>
 <div class="container">
-	<h3 class="sub-headers text-center font-weight-bold mt-5">Recently Added</h3>
-	<hr class="seperate mb-4">
-	<div class="boxed ">
+	<h3 class="font-weight-bold mt-5 sub-headers text-center">Recently Added</h3>
+	<hr class="mb-4 divider">
+	<div class="boxed">
 		<div class="row row-cols-1 row-cols-md-3">
 			{% for resume in recently_added_resumes %}
 			<a href="{{url_for('get_resume', resume_id=resume._id)}}">
+				<div class="col mb-4 card-info">
+					<div class="card card-border">
+						{% if not resume.image %}
+						<img src="/static/images/default_image.png" class="card-img-top card-img" alt="...">
+                        {% else %}
+						<img src="{{resume.image}}" class="card-img-top card-img" alt="...">
+                        {% endif %}
+						<div class="card-body">
+							<h5 class="card-title">{{resume.name}}</h5>
+						</div>
+					</div>
+				</div>
 			</a>
 			{% endfor %}
 		</div>
+		
 	</div>
 </div>
+
+
 {% endblock %}

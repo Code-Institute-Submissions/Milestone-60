@@ -7,26 +7,30 @@
             <label for="name">Resume Name</label>
             <input name="name" type="text" class="form-control" id="name" value="{{resume.name}}" required>
         </div>
+
+
         <div class="form-group">
-            <label for="cuisine">Job Title</label>
-            <select class="form-control" name="cuisine" id="cuisine" required>
-                {% for job in job_sector_title %}
-                    {% if job.job_sector_title == resume.job_title %}
-                    <option value="{{job_title.job_sector_title}}" selected>{{job_title.job_sector_title}}</option>
+            <label for="job_title">Job Title</label>
+            <select class="form-control" name="job_title" id="job_title" required>
+                {% for job_title in job_title %}
+                    {% if job_title.job_title == resume.job_title %}
+                    <option value="{{job_title.job_title}}" selected>{{job_title.job_title}}</option>
                     {% else %}
-                    <option value="{{job_title.job_sector_title}}">{{job_title.job_sector_title}}</option>
+                    <option value="{{job_title.job_title}}">{{job_title.job_title}}</option>
                     {% endif %}
                 {% endfor %}
             </select>
         </div>
+
+
         <div class="form-group">
-            <label for="ingredients">Work Duties</label>
-            <textarea name="ingredients" rows="3" class="form-control" id="ingredients"
+            <label for="work_duties">Work Duties</label>
+            <textarea name="work_duties" rows="3" class="form-control" id="work_duties"
                 required>{{resume.work_duties}}</textarea>
         </div>
         <div class="form-group">
-            <label for="tools">Skills</label>
-            <textarea name="tools" rows="3" class="form-control" id="tools" required>{{resume.skills}}</textarea>
+            <label for="skills">Skills</label>
+            <textarea name="skills" rows="3" class="form-control" id="skills" required>{{resume.skills}}</textarea>
         </div>
 
         <div class="form-group">
@@ -34,7 +38,7 @@
             <input name="image" type="url" class="form-control" id="image" value="{{resume.image}}">
         </div>
         <div class="text-center">
-            <button class="btn btn-edit" type="submit">Save</button>
+            <button class="btn btn-sucess" type="submit">Save</button>
         </div>
     </form>
 </div>

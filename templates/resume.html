@@ -32,8 +32,8 @@
     
     <div class="col-md-12 text-center">
         <form id="edit_form" action="{{url_for('edit_resume', resume_id=resume._id)}}" method="GET"></form>
-        <button form="edit_form" type="submit" class="btn btn-edit">Edit</button>
-        <button type="button" class="btn btn-del" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        <button form="edit_form" type="submit" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,9 +45,9 @@
                         Are you sure you want to delete the resume?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-edit" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                         <form method="POST" action="{{url_for('delete_resume', resume_id=resume._id)}}">
-                            <button type="submit" class="btn btn-del">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
                 </div>

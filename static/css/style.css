@@ -30,25 +30,26 @@ body {
 }
 
 /*---------home----------*/
-
-.container-home {
+.main-container {
+    margin-top: 100px;
     height: 450px;
     position: relative;
 }
 
-.header-home {
-    color: #ffefef;
+.main-header {
+    color: #fafafa;
     font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    padding-top: 250px; 
     width: 50%;
+    padding-top: 250px; 
+    font-size: 20px;
  }
 
- .seperate {
+ .divider {
     width: 400px;
     text-align: center;
-    background-color: #5da3fd;
+    background-color: #269014;
 }
+
 
 @media only screen and (max-width: 430px) {
     .seperate {
@@ -56,19 +57,19 @@ body {
     }
 }
 
+.home_div{
+    border: 1px black solid;
+}
+
 /*---------resumes----------*/
 
 .btn-edit {
-    background: #5da3fd;
-    color: #2eadf7;
     margin: 30px 10px 20px 0 ;
     height: 40px;
     width: 100px;
 }
 
 .btn-del {
-    background: #BE1526;
-    color: #ff2e2e;
     margin: 30px 10px 20px 0;
     height: 40px;
     width: 100px;

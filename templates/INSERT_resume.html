@@ -15,7 +15,7 @@
             <label for="resumes">Job Sector</label>
             <select class="form-control" name="job_title" id="job_title" required>
                 {% for job_title in job_title %}
-                <option value="{{job_title.job_sector_title}}">{{job_title.job_sector_title}}</option>
+                <option value="{{job_title.job_title}}">{{job_title.job_title}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-edit" type="submit">Save Resume</button>
+            <button class="btn btn-primary" type="submit">Save Resume</button>
         </div>
        
     </form>
