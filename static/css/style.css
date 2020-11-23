@@ -35,6 +35,7 @@ body {
     height: 450px;
     position: relative;
     color: #000;
+    
 }
 
 .main-header {
@@ -102,7 +103,7 @@ body {
 
 .card-info {
     color: black;
-
+}
 
 .card-img {
     padding: 10px;
