@@ -1,3 +1,6 @@
+Final Build Hosted on Heroku -- [Resume Database](https://cvstorage.herokuapp.com/)
+
+This project is a basic database where employees in a recruitment company can add their clients resumes and have them stored in an SQL database.
 
 ## User Experience (UX)
 
@@ -11,7 +14,6 @@
         4. To be able to update/edit or delete a resume.
         5. To be able to search for any resume by name.
         
-
 
         
 ## Features
