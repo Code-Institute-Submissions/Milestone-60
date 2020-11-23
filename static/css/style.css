@@ -31,23 +31,32 @@ body {
 
 /*---------home----------*/
 .main-container {
-    margin-top: 100px;
-    height: 450px;
-    position: relative;
+    margin-top: 70px;
     color: #000;
     
 }
 
+.main-col1{
+    margin-left: 10px;
+    padding-left: 30px;
+}
+
+.main-logo{
+
+}
+
 .main-header {
-    color: #ffffff;
+    color: #000;
     font-family: 'Open Sans', sans-serif;
-    width: 50%;
-    padding-top: 250px; 
+    width: 100%;
+    padding-top: 70px;
+    margin-bottom: 100px; 
     font-size: 20px;
+
  }
 
  .divider {
-    width: 600px;
+    width: 80%;
     text-align: center;
     background-color: #5da3fd;
 }
@@ -56,6 +65,9 @@ body {
 @media only screen and (max-width: 430px) {
     .seperate {
         width: 75%;
+    }
+    .main-header{
+        width: 100%;
     }
 }
 
@@ -108,14 +120,22 @@ body {
 .card-img {
     padding: 10px;
     border: none;
-    max-height: 200px;
-    max-width: 200px; 
+    max-height: 100px;
+    max-width: 100px; 
     object-fit: cover;
+}
+
+.resume-img{
+    width: 80px;
+    height: 100px;
 }
 
 @media only screen and (max-width: 767px) {
     .img-h {
         max-height: 245px;
+    }
+    .main-header{
+        width: 100%;
     }
 }
 

@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="main-container container-fluid">
-    <div class="main-header text-center">
-	    TEST
+<div class="main-container">
+    <div class="main-header text-center row">
+        <div class="col main-col1">
+            <div>TechRecruit Resume Database.</div>
+            <div>Use navigation menu to add new client resume to company database.</div>
+        </div>
+        <div class="col"></div>
+        <div class="col"><div class="main-logo">
+            <img src="/static/images/logo.JPG" class="home-logo"></div></div>
+        <div class="col"></div>
+        <div class="col"></div>
     </div>
+    
 </div>
 <div class="container">
 	<h3 class="font-weight-bold mt-5 sub-headers text-center">Recently Added</h3>
@@ -15,7 +24,7 @@
 				<div class="col mb-4 card-info">
 					<div class="card card-border">
 
-						<img src="/static/images/resume_icon.png" class="card-img-top card-img" alt="...">
+						<img src="/static/images/resume_icon.png" class="card-img-top card-img resume-img" alt="...">
   
 						<div class="card-body">
 							<h5 class="card-title">{{resume.name}}</h5>

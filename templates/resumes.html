@@ -25,11 +25,7 @@
             <a href="{{url_for('get_resume', resume_id=resume._id)}}">
                 <div class="col mb-4 card-info">
                     <div class="card card-border">
-                    <!--    {% if not resume.image %}-->
-                        <img src="/static/images/resume_icon.png" class="card-img-top card-img" alt="...">
-                        <!--{% else %}
-                            <img src="{{resume.image}}" class="card-img-top card-img" alt="...">
-                        {% endif %}-->
+                        <img src="/static/images/resume_icon.png" class="card-img-top card-img resume-img" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{resume.name}}</h5>
                         </div>

@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
-# Global Variables
+
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'recruitment'
 app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster.tzpih.mongodb.net/recruitment?retryWrites=true&w=majority'
@@ -12,7 +12,9 @@ mongo = PyMongo(app)
 pg_lim = 8
 first_pg = 1
 
-
+"""
+renders the home page
+"""
 @app.route('/')
 def home():
     recently_added_resumes=mongo.db.resumes.find().sort([("date",-1)]).limit(3)
@@ -25,6 +27,9 @@ def INSERT_resume():
     return render_template('INSERT_resume.html', job_title=mongo.db.job_title.find().sort([("job_title", 1)]))
 
 
+"""
+renders page to display all the resumes
+"""
 @app.route('/resumes')
 def get_resumes():
     search=request.args.get('search')
@@ -43,7 +48,9 @@ def get_resumes():
 
     return render_template('resumes.html', resumes=resumes.sort([("date",-1)]).skip((page-first_pg)*pg_lim if page > first_pg else 0).limit(pg_lim), page=(page if count > pg_lim else None) if page > 0 else first_pg,  previous=previous_url, next=next_url, count=count)   
 
-
+"""
+inserts resume into database
+"""
 @app.route('/save_resume', methods=["POST"])
 def save_resume():   
     resume=request.form.to_dict()
@@ -62,7 +69,9 @@ def insert_resume():
 
 
 
-
+"""
+renders page to edit selected resume
+"""
 @app.route('/edit_resume/<resume_id>')
 def edit_resume(resume_id):
     return render_template('edit_resume.html', resume=mongo.db.resumes.find_one({'_id': ObjectId(resume_id)}), job_title=mongo.db.resumes.find().sort([("name", 1)]))
